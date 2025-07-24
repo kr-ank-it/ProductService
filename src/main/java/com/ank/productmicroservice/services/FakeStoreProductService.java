@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.ank.productmicroservice.dtos.FakeStoreProductDto.getProductFromDto;
 
-@Service
+@Service("FakeStoreProductService")
 public class FakeStoreProductService implements ProductService{
     private RestTemplate restTemplate;
     public FakeStoreProductService(RestTemplate restTemplate) {
