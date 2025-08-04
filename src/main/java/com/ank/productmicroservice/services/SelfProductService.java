@@ -6,6 +6,8 @@ import com.ank.productmicroservice.models.Category;
 import com.ank.productmicroservice.models.Product;
 import com.ank.productmicroservice.repositories.CategoryRepository;
 import com.ank.productmicroservice.repositories.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,5 +64,12 @@ public class SelfProductService implements ProductService {
     @Override
     public boolean deleteProduct(Long id) {
         return false;
+    }
+
+    @Override
+    public Page<Product> getProducts(String title, int pageNumber, int pageSize) {
+
+        return productRepository.findByTitleContainingIgnoreCase(title, PageRequest.of(pageNumber, pageSize));
+
     }
 }

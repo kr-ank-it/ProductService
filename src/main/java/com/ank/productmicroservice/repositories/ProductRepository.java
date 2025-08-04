@@ -1,6 +1,8 @@
 package com.ank.productmicroservice.repositories;
 
 import com.ank.productmicroservice.models.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,4 +23,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select p from products p where p.id = 1")
     Product fetchThings(Long productId);
+
+    Page<Product> findByTitleContainingIgnoreCase(String title, PageRequest pageRequest);
 }
