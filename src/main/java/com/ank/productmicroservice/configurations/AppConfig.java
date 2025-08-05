@@ -1,6 +1,7 @@
 package com.ank.productmicroservice.configurations;
 
 import com.ank.productmicroservice.models.Product;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class AppConfig {
     @Bean
+    @LoadBalanced
     public RestTemplate createRestTemplate() {
         return new RestTemplate();
     }

@@ -14,7 +14,7 @@ public class AuthCommons {
     }
 
     public UserDto validateToken(String token) {
-        String url = "http://localhost:8080/auth/validate/" + token;
+        String url = "http://AUTHSERVICE/auth/validate/" + token;
         ResponseEntity<UserDto> responseEntity = restTemplate.getForEntity(url, UserDto.class);
         return responseEntity.getBody();
     }

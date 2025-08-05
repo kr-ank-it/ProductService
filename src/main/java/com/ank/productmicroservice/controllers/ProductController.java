@@ -33,10 +33,10 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Long productId, @RequestHeader("token") String token) throws ProductNotFoundException {
-//        UserDto userDto = authCommons.validateToken(token);
-//        if(userDto == null) {
-//            throw new InvalidTokenException("Token is invalid or expired. Please login again.");
-//        }
+        UserDto userDto = authCommons.validateToken(token);
+        if(userDto == null) {
+            throw new InvalidTokenException("Token is invalid or expired. Please login again.");
+        }
 
         return new ResponseEntity<>(
                 productService.getSingleProduct(productId),
